@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar = ({changeForecast}) => {
   return (
     <div>
-      <button className="nav-button">Currently</button>
-      <button className="nav-button">Minutely</button>
-      <button className="nav-button">Hourly</button>
-      <button className="nav-button">Daily</button>
+      <button className="nav-button" onClick={()=> changeForecast('currently')}>Currently</button>
+      <button className="nav-button" onClick={()=> changeForecast('minutely')} >Minutely</button>
+      <button className="nav-button" onClick={()=> changeForecast('hourly')} >Hourly</button>
+      <button className="nav-button" onClick={()=> changeForecast('daily')} >Daily</button>
     </div>
   )
 }

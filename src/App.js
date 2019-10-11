@@ -31,10 +31,10 @@ class App extends Component {
   handleForecastchange = (forecastKey) => {
     this.setState({forecastKey: forecastKey})
   }
-  
+
   render () {
-    const { fetchingData, weatherData } = this.state;
-    // console.log(fetchingData);
+    const { fetchingData, weatherData, forecastKey } = this.state;
+    console.log(forecastKey);
     // console.log("this is weather data:", weatherData);
 
     return (
@@ -49,7 +49,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             :
             <div>
-              <Navbar />
+              <Navbar changeForecast ={this.handleForecastchange} />
               <CurrentForecast forecast={this.state.weatherData} />
             </div>
           }

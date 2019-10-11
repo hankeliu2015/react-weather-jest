@@ -3,7 +3,7 @@ import moment from 'moment'
 
 const CurrentForecast = props => {
   // debugger
-  console.log(props.forecast)
+  // console.log(props.forecast)
   return (
     <div>
       <h2>Current Forecast </h2>
