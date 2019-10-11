@@ -4,6 +4,7 @@ import './App.css';
 import fetchJsonp from 'fetch-jsonp'
 import Navbar from './Navbar'
 import CurrentForecast from './components/currentForecast'
+import MinutelyForecast from './components/minutelyForecast'
 
 const APIURL = `https://api.darksky.net/forecast/${process.env.REACT_APP_DARK_SKY_KEY}/` // will get current log and lat from following function
 
@@ -11,7 +12,7 @@ class App extends Component {
   state = {
     fetchingData: true,
     weatherData: {},
-    forecastKey: null
+    forecastKey: 'currently'
   }
 
   componentDidMount() {
@@ -34,8 +35,10 @@ class App extends Component {
 
   render () {
     const { fetchingData, weatherData, forecastKey } = this.state;
-    console.log(forecastKey);
     // console.log("this is weather data:", weatherData);
+
+    console.log(forecastKey);
+    console.log(weatherData[forecastKey]);
 
     return (
       <div className="App">
@@ -50,7 +53,14 @@ class App extends Component {
             :
             <div>
               <Navbar changeForecast ={this.handleForecastchange} />
-              <CurrentForecast forecast={this.state.weatherData} />
+
+              {/*
+                <CurrentForecast forecast={forecastKey === null? weatherData.currently : weatherData[forecastKey]} />
+                */}
+
+            {forecastKey === 'currently' && <CurrentForecast forecast={weatherData[forecastKey]} /> }
+
+            {forecastKey === 'minutely' && <MinutelyForecast forecastData={weatherData[forecastKey].data} /> }
             </div>
           }
         </div>
