@@ -41,7 +41,7 @@ class App extends Component {
         {fetchingData ?
           <img src={logo} className="App-logo" alt="logo" /> :
 
-          <CurrentForecast />
+          <CurrentForecast props={this.state.weatherData} />
         }
 
       </div>
