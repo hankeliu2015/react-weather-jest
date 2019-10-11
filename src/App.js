@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import fetchJsonp from 'fetch-jsonp'
 
-const APIURL = `https://api.darksky.net/forecast/{process.env.REACT_APP_DARK_SKY_KEY}/37.8267,-122.4233`
+const APIURL = `https://api.darksky.net/forecast/${process.env.REACT_APP_DARK_SKY_KEY}/` // will get current log and lat from following function
 
 class App extends Component {
   state = {
@@ -15,6 +16,10 @@ class App extends Component {
       const {latitude, longitude} = position.coords
       console.log(latitude)
       console.log(longitude)
+      console.log(process.env.key)
+      fetchJsonp(`${APIURL}${latitude},${longitude}`)
+      .then(resp => resp.json())
+      .then(forcast => console.log(forcast))
     });
   }
 
@@ -30,7 +35,7 @@ class App extends Component {
         </header>
 
         {fetchingData ? <img src={logo} className="App-logo" alt="logo" /> : <p>Data is received</p> }
-
+        
       </div>
     );
   }
