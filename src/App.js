@@ -10,7 +10,8 @@ const APIURL = `https://api.darksky.net/forecast/${process.env.REACT_APP_DARK_SK
 class App extends Component {
   state = {
     fetchingData: true,
-    weatherData: {}
+    weatherData: {},
+    forecastKey: null
   }
 
   componentDidMount() {
@@ -27,7 +28,10 @@ class App extends Component {
     });
   }
 
-
+  handleForecastchange = (forecastKey) => {
+    this.setState({forecastKey: forecastKey})
+  }
+  
   render () {
     const { fetchingData, weatherData } = this.state;
     // console.log(fetchingData);
