@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          React Weather App
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    fetchingData: true,
+    weatherData: {}
+  }
+
+  render () {
+    const { fetchingData } = this.state;
+    console.log(fetchingData);
+
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h3>React Weather App</h3>
+        </header>
+
+        {fetchingData ? <img src={logo} className="App-logo" alt="logo" /> : <p>Data is received</p> }
+
+      </div>
+    );
+  }
 }
 
 export default App;
+
+{/*
+<img src={logo} className="App-logo" alt="logo" />
+
+  */}
