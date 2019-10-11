@@ -21,3 +21,24 @@
 .App-link {
   color: #09d3ac;
 }
+.App-intro {
+  font-size: large;
+  padding-top: 20px;
+}
+
+.nav-button {
+  border: none;
+  color: white;
+  background: grey;
+  margin: 12px;
+}
+.nav-button:hover {
+
+  color: orange;
+  border: 1px solid orangered;
+  background: white;
+}
+
+.nav-button:focus {
+  outline: 0;
+}
