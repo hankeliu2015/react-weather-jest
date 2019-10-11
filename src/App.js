@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import fetchJsonp from 'fetch-jsonp'
-import Navbar from './Navbar'
-import CurrentForecast from './components/currentForecast'
-import MinutelyForecast from './components/minutelyForecast'
+import fetchJsonp from 'fetch-jsonp';
+import Navbar from './Navbar';
+import CurrentForecast from './components/currentForecast';
+import MinutelyForecast from './components/minutelyForecast';
+import HourlyForecast from './components/hourlyForecast';
+import DailyForecast from './components/dailyForecast';
 
 const APIURL = `https://api.darksky.net/forecast/${process.env.REACT_APP_DARK_SKY_KEY}/` // will get current log and lat from following function
 
@@ -20,7 +22,7 @@ class App extends Component {
       const {latitude, longitude} = position.coords
       // console.log(latitude)
       // console.log(longitude)
-      console.log('API Key:', process.env.REACT_APP_DARK_SKY_KEY)
+      // console.log('API Key:', process.env.REACT_APP_DARK_SKY_KEY)
       fetchJsonp(`${APIURL}${latitude},${longitude}`)
       .then(resp => resp.json())
       .then(weatherData => this.setState({
@@ -35,7 +37,7 @@ class App extends Component {
 
   render () {
     const { fetchingData, weatherData, forecastKey } = this.state;
-    // console.log("this is weather data:", weatherData);
+    console.log("this is weather data:", weatherData);
 
     console.log(forecastKey);
     console.log(weatherData[forecastKey]);
@@ -61,6 +63,10 @@ class App extends Component {
             {forecastKey === 'currently' && <CurrentForecast forecast={weatherData[forecastKey]} /> }
 
             {forecastKey === 'minutely' && <MinutelyForecast forecastData={weatherData[forecastKey].data} /> }
+
+            {forecastKey === 'hourly' && <HourlyForecast forecastData={weatherData[forecastKey].data} /> }
+
+            {forecastKey === 'daily' && <DailyForecast forecastData={weatherData[forecastKey].data} /> }
             </div>
           }
         </div>
@@ -70,8 +76,3 @@ class App extends Component {
 }
 
 export default App;
-
-{/*
-<img src={logo} className="App-logo" alt="logo" />
-
-  */}
