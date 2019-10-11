@@ -45,7 +45,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             :
             <div>
-              <Navbar></Navbar>
+              <Navbar />
               <CurrentForecast forecast={this.state.weatherData} />
             </div>
           }
