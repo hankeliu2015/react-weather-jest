@@ -15,9 +15,9 @@ class App extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
       const {latitude, longitude} = position.coords
-      console.log(latitude)
-      console.log(longitude)
-      console.log(process.env.key)
+      // console.log(latitude)
+      // console.log(longitude)
+      console.log('API Key:', process.env.REACT_APP_DARK_SKY_KEY)
       fetchJsonp(`${APIURL}${latitude},${longitude}`)
       .then(resp => resp.json())
       .then(weatherData => this.setState({
@@ -29,8 +29,8 @@ class App extends Component {
 
   render () {
     const { fetchingData, weatherData } = this.state;
-    console.log(fetchingData);
-    console.log("this is weather data:", weatherData);
+    // console.log(fetchingData);
+    // console.log("this is weather data:", weatherData);
 
     return (
       <div className="App">
@@ -41,7 +41,7 @@ class App extends Component {
         {fetchingData ?
           <img src={logo} className="App-logo" alt="logo" /> :
 
-          <CurrentForecast props={this.state.weatherData} />
+          <CurrentForecast forecast={this.state.weatherData} />
         }
 
       </div>
