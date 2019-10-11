@@ -19,14 +19,15 @@ class App extends Component {
       console.log(process.env.key)
       fetchJsonp(`${APIURL}${latitude},${longitude}`)
       .then(resp => resp.json())
-      .then(forcast => console.log(forcast))
+      .then(weatherData => this.setState({weatherData: weatherData}))
     });
   }
 
 
   render () {
-    const { fetchingData } = this.state;
+    const { fetchingData, weatherData } = this.state;
     console.log(fetchingData);
+    console.log("this is weather data:", weatherData);
 
     return (
       <div className="App">
@@ -35,7 +36,7 @@ class App extends Component {
         </header>
 
         {fetchingData ? <img src={logo} className="App-logo" alt="logo" /> : <p>Data is received</p> }
-        
+
       </div>
     );
   }
