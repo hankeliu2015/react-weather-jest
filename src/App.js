@@ -2,13 +2,22 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const = APIURL = `https://api.darksky.net/forecast/{process.env.REACT_APP_DARK_SKY_KEY}/37.8267,-122.4233`
+const APIURL = `https://api.darksky.net/forecast/{process.env.REACT_APP_DARK_SKY_KEY}/37.8267,-122.4233`
 
 class App extends Component {
   state = {
     fetchingData: true,
     weatherData: {}
   }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(position => {
+      const {latitude, longitude} = position.coords
+      console.log(latitude)
+      console.log(longitude)
+    });
+  }
+
 
   render () {
     const { fetchingData } = this.state;
