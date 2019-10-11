@@ -42,3 +42,9 @@
 .nav-button:focus {
   outline: 0;
 }
+
+.forecast {
+  border: 'solid 1 px black';
+  padding: '16px';
+  margin: '16px';
+}

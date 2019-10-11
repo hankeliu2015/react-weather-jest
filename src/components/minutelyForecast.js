@@ -3,17 +3,20 @@ import moment from 'moment'
 
 const MinutelyForecast = props => {
 
+  const renderForecasts = props.forecastData.map(({precipIntensity, precipProbability, time}, index) => {
+    return (
+      <div key={index}>
+      <p>Current Time: {moment.unix(time).format('MMMM Do YYYY, h:mm:ss a')}</p>
+      <p>Intensity of Percipitation: {precipIntensity}</p>
+      <p>Chance of Percipitation: {precipProbability}</p>
+      </div>
+    )
+  })
+
   return (
     <div>
       <h2>Minutely Forecast </h2>
-      <div style={{border: 'solid 1 px black', padding: '16px', margin: '16px'}}>
-        <h3></h3>
-
-          <p>Current Time: {moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
-
-
-      </div>
-
+        {renderForecasts}
     </div>
   )
 }
