@@ -60,7 +60,7 @@ class App extends Component {
                 <CurrentForecast forecast={forecastKey === null? weatherData.currently : weatherData[forecastKey]} />
                 */}
 
-            {forecastKey === 'currently' && <CurrentForecast forecast={weatherData[forecastKey]} /> }
+            {forecastKey === 'currently' && <CurrentForecast forecast={weatherData[forecastKey]} timeZone={weatherData.timezone} /> }
 
             {forecastKey === 'minutely' && <MinutelyForecast forecastData={weatherData[forecastKey].data} /> }
 
