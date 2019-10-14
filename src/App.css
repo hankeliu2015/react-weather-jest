@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #16a085;
   min-height: 15vh;
   display: flex;
   flex-direction: column;
@@ -27,10 +27,11 @@
 }
 
 .nav-button {
-  border: none;
+  border: 1px solid;
   color: white;
   background: grey;
-  margin: 20px;
+  margin: 12px;
+  padding: 5px;
 }
 .nav-button:hover {
 
@@ -43,8 +44,8 @@
   outline: 0;
 }
 
-.forecast {
-  border: solid 1px black;
+.forecast-card {
+  border: solid 1px #e74c3c;
   padding: 16px;
   margin: 16px;
 }
