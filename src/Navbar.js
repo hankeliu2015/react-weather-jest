@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 
 class Navbar extends Component  {
+  state = {
+    location: ''
+  }
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
   render () {
 
     return (
@@ -11,7 +19,7 @@ class Navbar extends Component  {
         <button className="nav-button" onClick={()=> this.props.changeForecast('hourly')} >Hourly</button>
         <button className="nav-button" onClick={()=> this.props.changeForecast('daily')} >Daily</button>
 
-        <input type="text" list='location' name="location" />
+        <input type="text" list='location' name="location" value={this.state.location} onChange={this.handleChange}/>
         <datalist id="locaton">
           <option value="New York" />
           <option value="DC" />
