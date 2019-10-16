@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 
-const Navbar = ({changeForecast}) => {
-  return (
-    <div>
-      <button className={"nav-button"} onClick={()=> changeForecast('currently')}>Currently</button>
-      <button className={"nav-button"} onClick={()=> changeForecast('minutely')} >Minutely</button>
-      <button className="nav-button" onClick={()=> changeForecast('hourly')} >Hourly</button>
-      <button className="nav-button" onClick={()=> changeForecast('daily')} >Daily</button>
+class Navbar extends Component  {
+
+  render () {
+
+    return (
+      <div>
+        <button className={"nav-button"} onClick={()=> this.props.changeForecast('currently')}>Currently</button>
+        <button className={"nav-button"} onClick={()=> this.props.changeForecast('minutely')} >Minutely</button>
+        <button className="nav-button" onClick={()=> this.props.changeForecast('hourly')} >Hourly</button>
+        <button className="nav-button" onClick={()=> this.props.changeForecast('daily')} >Daily</button>
 
         <input type="text" list='location' name="location" />
         <datalist id="locaton">
@@ -18,8 +21,11 @@ const Navbar = ({changeForecast}) => {
         </datalist>
         <input type="submit" value="Submit Location" />
 
-    </div>
-  )
+      </div>
+    )
+
+  }
+
 }
 
 export default Navbar;
