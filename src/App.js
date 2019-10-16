@@ -31,6 +31,11 @@ class App extends Component {
     });
   }
 
+  updateLatLng = (lat, lng) => {
+    console.log(lat, lng);
+
+  }
+
   handleForecastchange = (forecastKey) => {
     this.setState({forecastKey: forecastKey})
   }
@@ -39,9 +44,7 @@ class App extends Component {
     const { fetchingData, weatherData, forecastKey } = this.state;
 
     console.log("this is weather data:", weatherData);
-
     console.log("weatherData ForeCastKey Value:",forecastKey);
-    console.log("DotEnv Variable:",process.env.REACT_APP_DARK_SKY_KEY, process.env.REACT_APP_GEO_CODING);
 
     return (
       <div className="App">
@@ -55,7 +58,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             :
             <div>
-              <Navbar changeForecast ={this.handleForecastchange} />
+              <Navbar changeForecast ={this.handleForecastchange} updateLatLng={this.updateLatLng} />
 
               {/*
                 <CurrentForecast forecast={forecastKey === null? weatherData.currently : weatherData[forecastKey]} />

@@ -19,18 +19,16 @@ class Navbar extends Component  {
     fetch(`https://api.opencagedata.com/geocode/v1/json?q=${PLACENAME}&key=${process.env.REACT_APP_GEO_CODING}`)
     .then(resp => resp.json())
     .then(location => {
-      console.log(location);
       this.setState({
-        lng: location.results[0].annotations.DMS.lng,
-        lat: location.results[0].annotations.DMS.lat
+        lat: location.results[0].annotations.DMS.lat,
+        lng: location.results[0].annotations.DMS.lng
       })
-
-      console.log("location Data", this.state)
-
+      console.log(this.state)
+      //pass in the lat/lang into callback function to fetch dark sky with new lng and lat data.
+      this.props.updateLatLng(this.state.lat, this.state.lng);
     })
 
-    //fetch the data from open openCage//
-    //pass in the lat/lang into callback function to fetch dark sky
+
   }
   render () {
     return (
