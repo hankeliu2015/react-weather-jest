@@ -37,10 +37,11 @@ class App extends Component {
 
   render () {
     const { fetchingData, weatherData, forecastKey } = this.state;
+
     console.log("this is weather data:", weatherData);
 
-    console.log(forecastKey);
-    console.log(weatherData[forecastKey]);
+    console.log("weatherData ForeCastKey Value:",forecastKey);
+    console.log("DotEnv Variable:",process.env.REACT_APP_DARK_SKY_KEY, process.env.REACT_APP_GEO_CODING);
 
     return (
       <div className="App">
