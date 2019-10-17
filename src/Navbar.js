@@ -23,7 +23,7 @@ class Navbar extends Component  {
         lat: location.results[0].annotations.DMS.lat,
         lng: location.results[0].annotations.DMS.lng
       })
-      this.props.updateLatLng(this.state.lat, this.state.lng);
+      this.props.reqeuestWeatherData(this.state.lat, this.state.lng);
       // debugger
     })
 

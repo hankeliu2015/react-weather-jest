@@ -20,9 +20,6 @@ class App extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
       const {latitude, longitude} = position.coords
-      // console.log(latitude)
-      // console.log(longitude)
-      // console.log('API Key:', process.env.REACT_APP_DARK_SKY_KEY)
       fetchJsonp(`${APIURL}${latitude},${longitude}`)
       .then(resp => resp.json())
       .then(weatherData => this.setState({
@@ -31,8 +28,8 @@ class App extends Component {
     });
   }
 
-  updateLatLng = (lat, lng) => {
-    console.log("openCage lat / Lng data:",lat, lng);
+  reqeuestWeatherData = (lat, lng) => {
+    console.log("openCage DMS data:",lat, lng);
     let latitude = this.parseDMS(lat);
     let longitude = this.parseDMS(lng);
 
@@ -82,7 +79,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             :
             <div>
-              <Navbar changeForecast ={this.handleForecastchange} updateLatLng={this.updateLatLng} />
+              <Navbar changeForecast ={this.handleForecastchange} reqeuestWeatherData={this.reqeuestWeatherData} />
 
               {/*
                 <CurrentForecast forecast={forecastKey === null? weatherData.currently : weatherData[forecastKey]} />
