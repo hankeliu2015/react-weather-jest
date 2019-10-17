@@ -4,7 +4,10 @@ class Navbar extends Component  {
   state = {
     location: '',
     lng: '',
-    lat: ''
+    lat: '',
+    city: '',
+    state: '',
+    country: '',
   }
 
   handleChange = (e) => {
@@ -21,7 +24,10 @@ class Navbar extends Component  {
     .then(location => {
       this.setState({
         lat: location.results[0].annotations.DMS.lat,
-        lng: location.results[0].annotations.DMS.lng
+        lng: location.results[0].annotations.DMS.lng,
+        city: location.results[0].components.city,
+        state: location.results[0].components.state,
+        country: location.results[0].components.country
       })
       this.props.reqeuestWeatherData(this.state.lat, this.state.lng);
       // debugger
@@ -47,7 +53,7 @@ class Navbar extends Component  {
           </datalist>
           <input type="submit" value="Submit Location" />
         </form>
-
+          {this.state.city ? <h4>Location: {this.state.city},  {this.state.state}, {this.state.country}</h4>: null}
       </div>
     )
 
