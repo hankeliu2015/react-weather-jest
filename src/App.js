@@ -33,10 +33,9 @@ class App extends Component {
 
   updateLatLng = (lat, lng) => {
     console.log("openCage lat / Lng data:",lat, lng);
-    let latitude = this.ParseDMS(lat);
-    let longitude = this.ParseDMS(lng);
-// debugger
-    // pass the lat and lng to the state and resent fetch to darkkey api.
+    let latitude = this.parseDMS(lat);
+    let longitude = this.parseDMS(lng);
+
     fetchJsonp(`${APIURL}${latitude},${longitude}`)
     .then(resp => resp.json())
     .then(weatherData => {
@@ -46,6 +45,12 @@ class App extends Component {
       })
   }
 
+  parseDMS = (dmsData) => {
+    var splitedData = dmsData.split(/[^\d\w.]+/);
+    var ddData = this.convertDMSToDD(splitedData[0], splitedData[1], splitedData[2], splitedData[3]);
+    return ddData;
+  }
+
   convertDMSToDD = (degrees, minutes, seconds, direction) => {
     var dd = parseInt(degrees) + parseInt(minutes)/60 + parseInt(seconds)/(60*60);
 
@@ -53,14 +58,6 @@ class App extends Component {
         dd = dd * -1;
     } // Don't do anything for N or E
     return dd;
-  }
-
-  ParseDMS = (input) => {
-      var parts = input.split(/[^\d\w.]+/);
-      var lat = this.convertDMSToDD(parts[0], parts[1], parts[2], parts[3]);
-      debugger
-      // var lng = this.convertDMSToDD(parts[4], parts[5], parts[6], parts[7]);
-      return lat
   }
 
   handleForecastchange = (forecastKey) => {
