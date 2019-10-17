@@ -46,7 +46,7 @@ class App extends Component {
       })
   }
 
-  convertDMSToDD = (degrees, minutes, seconds, others, direction) => {
+  convertDMSToDD = (degrees, minutes, seconds, direction) => {
     var dd = parseInt(degrees) + parseInt(minutes)/60 + parseInt(seconds)/(60*60);
 
     if (direction == "S" || direction == "W") {
@@ -56,8 +56,8 @@ class App extends Component {
   }
 
   ParseDMS = (input) => {
-      var parts = input.split(/[^\d\w]+/);
-      var lat = this.convertDMSToDD(parts[0], parts[1], parts[2], parts[3], parts[4]);
+      var parts = input.split(/[^\d\w.]+/);
+      var lat = this.convertDMSToDD(parts[0], parts[1], parts[2], parts[3]);
       debugger
       // var lng = this.convertDMSToDD(parts[4], parts[5], parts[6], parts[7]);
       return lat
