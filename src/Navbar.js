@@ -23,11 +23,9 @@ class Navbar extends Component  {
         lat: location.results[0].annotations.DMS.lat,
         lng: location.results[0].annotations.DMS.lng
       })
-      console.log(this.state)
-      //pass in the lat/lang into callback function to fetch dark sky with new lng and lat data.
       this.props.updateLatLng(this.state.lat, this.state.lng);
+      // debugger
     })
-
 
   }
   render () {

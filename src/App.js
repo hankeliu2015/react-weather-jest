@@ -32,8 +32,35 @@ class App extends Component {
   }
 
   updateLatLng = (lat, lng) => {
-    console.log(lat, lng);
+    console.log("openCage lat / Lng data:",lat, lng);
+    let latitude = this.ParseDMS(lat);
+    let longitude = this.ParseDMS(lng);
+// debugger
+    // pass the lat and lng to the state and resent fetch to darkkey api.
+    fetchJsonp(`${APIURL}${latitude},${longitude}`)
+    .then(resp => resp.json())
+    .then(weatherData => {
+      this.setState({
+        fetchingData: false,
+        weatherData: weatherData})
+      })
+  }
 
+  convertDMSToDD = (degrees, minutes, seconds, others, direction) => {
+    var dd = parseInt(degrees) + parseInt(minutes)/60 + parseInt(seconds)/(60*60);
+
+    if (direction == "S" || direction == "W") {
+        dd = dd * -1;
+    } // Don't do anything for N or E
+    return dd;
+  }
+
+  ParseDMS = (input) => {
+      var parts = input.split(/[^\d\w]+/);
+      var lat = this.convertDMSToDD(parts[0], parts[1], parts[2], parts[3], parts[4]);
+      debugger
+      // var lng = this.convertDMSToDD(parts[4], parts[5], parts[6], parts[7]);
+      return lat
   }
 
   handleForecastchange = (forecastKey) => {
@@ -43,8 +70,8 @@ class App extends Component {
   render () {
     const { fetchingData, weatherData, forecastKey } = this.state;
 
-    console.log("this is weather data:", weatherData);
-    console.log("weatherData ForeCastKey Value:",forecastKey);
+    console.log("Darksky weather data:", weatherData);
+    console.log("State.ForeCastKey Value:",forecastKey);
 
     return (
       <div className="App">
