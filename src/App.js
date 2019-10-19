@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   reqeuestWeatherData = (lat, lng) => {
-    console.log("openCage DMS data:",lat, lng);
+    // console.log("openCage DMS data:",lat, lng);
     let latitude = this.parseDMS(lat);
     let longitude = this.parseDMS(lng);
 
@@ -64,8 +64,8 @@ class App extends Component {
   render () {
     const { fetchingData, weatherData, forecastKey } = this.state;
 
-    console.log("Darksky weather data:", weatherData);
-    console.log("State.ForeCastKey Value:",forecastKey);
+    // console.log("Darksky weather data:", weatherData);
+    // console.log("State.ForeCastKey Value:",forecastKey);
 
     return (
       <div className="App">
