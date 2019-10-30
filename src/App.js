@@ -19,17 +19,13 @@ class App extends Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
-
       const {latitude, longitude} = position.coords
-      debugger
+      
       fetchJsonp(`${APIURL}${latitude},${longitude}`)
       .then(resp => resp.json())
-      .then(weatherData => {
-// debugger
-        this.setState({
-
+      .then(weatherData => this.setState({
         fetchingData: false,
-        weatherData: weatherData})})
+        weatherData: weatherData}))
     });
   }
 
