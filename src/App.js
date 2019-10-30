@@ -19,12 +19,17 @@ class App extends Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
+
       const {latitude, longitude} = position.coords
+      debugger
       fetchJsonp(`${APIURL}${latitude},${longitude}`)
       .then(resp => resp.json())
-      .then(weatherData => this.setState({
+      .then(weatherData => {
+// debugger
+        this.setState({
+
         fetchingData: false,
-        weatherData: weatherData}))
+        weatherData: weatherData})})
     });
   }
 
@@ -36,6 +41,7 @@ class App extends Component {
     fetchJsonp(`${APIURL}${latitude},${longitude}`)
     .then(resp => resp.json())
     .then(weatherData => {
+      debugger
       this.setState({
         fetchingData: false,
         weatherData: weatherData})
@@ -64,8 +70,8 @@ class App extends Component {
   render () {
     const { fetchingData, weatherData, forecastKey } = this.state;
 
-    // console.log("Darksky weather data:", weatherData);
-    // console.log("State.ForeCastKey Value:",forecastKey);
+    console.log("Darksky weather data:", weatherData);
+    console.log("State.ForeCastKey Value:",forecastKey);
 
     return (
       <div className="App">
