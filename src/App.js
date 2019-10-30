@@ -82,18 +82,13 @@ class App extends Component {
             :
             <div>
               <Navbar changeForecast ={this.handleForecastchange} reqeuestWeatherData={this.reqeuestWeatherData} />
-
               {/*
                 <CurrentForecast forecast={forecastKey === null? weatherData.currently : weatherData[forecastKey]} />
                 */}
-
-            {forecastKey === 'currently' && <CurrentForecast forecast={weatherData[forecastKey]} timeZone={weatherData.timezone} /> }
-
-            {forecastKey === 'minutely' && <MinutelyForecast forecastData={weatherData[forecastKey].data} /> }
-
-            {forecastKey === 'hourly' && <HourlyForecast forecastData={weatherData[forecastKey].data} /> }
-
-            {forecastKey === 'daily' && <DailyForecast forecastData={weatherData[forecastKey].data} /> }
+              {forecastKey === 'currently' && <CurrentForecast forecast={weatherData[forecastKey]} timeZone={weatherData.timezone} /> }
+              {forecastKey === 'minutely' && <MinutelyForecast forecastData={weatherData[forecastKey].data} /> }
+              {forecastKey === 'hourly' && <HourlyForecast forecastData={weatherData[forecastKey].data} /> }
+              {forecastKey === 'daily' && <DailyForecast forecastData={weatherData[forecastKey].data} /> }
             </div>
           }
         </div>

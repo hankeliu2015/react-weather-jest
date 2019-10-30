@@ -2,8 +2,6 @@ import React from 'react';
 import moment from 'moment'
 
 const CurrentForecast = props => {
-  // debugger
-  // console.log(props.forecast)
   return (
     <div>
       <h2>Current Forecast </h2>
@@ -15,11 +13,7 @@ const CurrentForecast = props => {
           <p>feels Like: {props.forecast.apparentTemperature}</p>
           <p>Chance of Percipitation: {props.forecast.precipProbability}</p>
           <p>Humidity: {props.forecast.humidity}</p>
-
       </div>
-
-
-
     </div>
   )
 }
