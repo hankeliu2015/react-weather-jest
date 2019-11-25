@@ -44,7 +44,7 @@ class Navbar extends Component  {
 
         <form onSubmit={this.handleSubmit}>
           <input type="text" list='location' name="location" value={this.state.location} onChange={this.handleChange}/>
-          <datalist id="locaton">
+          <datalist id="location">
             <option value="New York" />
             <option value="DC" />
             <option value="Boston" />
