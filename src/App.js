@@ -37,7 +37,7 @@ class App extends Component {
     fetchJsonp(`${APIURL}${latitude},${longitude}`)
     .then(resp => resp.json())
     .then(weatherData => {
-      debugger
+      // debugger
       this.setState({
         fetchingData: false,
         weatherData: weatherData})
