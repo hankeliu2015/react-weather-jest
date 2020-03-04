@@ -61,12 +61,3 @@ class Navbar extends Component  {
 }
 
 export default Navbar;
-
-{/*
-
-  onSubmit will invoke handleSubmit(), launch fetch to openCage pass in location as argument. return the lan/lat.
-  another callback function in app.js, take the lan/lat argment, fetch dark sky API.
-  state.weatherData in App.js will be updated, pass into props to child components.
-
-
-  */}
