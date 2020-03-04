@@ -53,7 +53,7 @@ class App extends Component {
   convertDMSToDD = (degrees, minutes, seconds, direction) => {
     var dd = parseInt(degrees) + parseInt(minutes)/60 + parseInt(seconds)/(60*60);
 
-    if (direction == "S" || direction == "W") {
+    if (direction === "S" || direction === "W") {
         dd = dd * -1;
     } // Don't do anything for N or E
     return dd;
