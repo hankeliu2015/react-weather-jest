@@ -23,6 +23,7 @@ class Navbar extends Component  {
     fetch(`https://api.opencagedata.com/geocode/v1/json?q=${PLACENAME}&key=${process.env.REACT_APP_GEO_CODING}`)
     .then(resp => resp.json())
     .then(location => {
+      // debugger;
       this.setState({
         lat: location.results[0].annotations.DMS.lat,
         lng: location.results[0].annotations.DMS.lng,
