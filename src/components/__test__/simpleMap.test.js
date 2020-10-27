@@ -25,15 +25,18 @@ xit('show 2 input buttons', () => {
   expect(wrapped.find("input").length).toEqual(1)
 })
 
-it('input area user can type in location', () => {
+xit('input area user can type in location', () => {
   wrapped2.find("textarea").simulate('change', {
     target: {value: "city name"}
   });
 
   wrapped2.update();
-  // console.log(wrapped2.find('textarea').prop);
-  // let propObj = wrapped2.find('textarea').prop;
-  // console.log(propObj.value)
   expect(wrapped2.find('textarea').prop('value')).toEqual("city name");
   // props().value or props() to show the props object
+})
+
+it('Text area gets empty when form submitted', () => {
+  wrapped2.find('form').simulate('submit');
+  wrapped2.update();
+  expect(wrapped2.find('textarea').prop('value')).toEqual('');
 })
