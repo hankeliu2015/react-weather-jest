@@ -33,6 +33,7 @@ class Navbar extends Component  {
       })
       this.props.reqeuestWeatherData(this.state.lat, this.state.lng);
     })
+    this.setState({location: ''});
   }
   render () {
     return (
