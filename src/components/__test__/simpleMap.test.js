@@ -10,27 +10,30 @@ let wrapped2;
 
 beforeEach(() => {
   wrapped = shallow(<Navbar />);
-  wrapped2 = mount(<App />);
+  wrapped2 = mount(<Navbar />);
 })
 
 afterEach(() => {
-  wrapped.unmount();
+  wrapped2.unmount();
 })
 
-it('show a form', () => {
+xit('show a form', () => {
   expect(wrapped2.find("form").length).toEqual(1)
 })
 
-// it('show 2 input buttons', () => {
-//   expect(wrapped.find("input").length).toEqual(2)
-// })
+xit('show 2 input buttons', () => {
+  expect(wrapped.find("input").length).toEqual(1)
+})
 
-// it('input area user can type in location', () => {
-//   wrapped2.find("input").simulate('change', {
-//     target: {value: 'city name 123456'}
-//   });
-//
-//   wrapped2.update();
-//   expect(wrapped2.find('input').prop('value')).toEqual("city name 123456");
-//
-// })
+it('input area user can type in location', () => {
+  wrapped2.find("textarea").simulate('change', {
+    target: {value: "city name"}
+  });
+
+  wrapped2.update();
+  // console.log(wrapped2.find('textarea').prop);
+  // let propObj = wrapped2.find('textarea').prop;
+  // console.log(propObj.value)
+  expect(wrapped2.find('textarea').prop('value')).toEqual("city name");
+  // props().value or props() to show the props object
+})

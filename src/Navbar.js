@@ -10,10 +10,10 @@ class Navbar extends Component  {
     country: '',
   }
 
-
   handleChange = (e) => {
+    // console.log(`${e.target.name}:`, e.target.value)
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value // use location for the key to pass jest test.
     })
   }
 
@@ -43,7 +43,7 @@ class Navbar extends Component  {
         <button className="nav-button" onClick={()=> this.props.changeForecast('daily')} >Daily</button>
 
         <form onSubmit={this.handleSubmit}>
-          <input type="text" list='location' name="location" value={this.state.location} onChange={this.handleChange}/>
+          <textarea type="text" list='location' name="location" value={this.state.location} onChange={this.handleChange}/>
           <datalist id="location">
             <option value="New York" />
             <option value="DC" />
@@ -51,6 +51,7 @@ class Navbar extends Component  {
             <option value="Chicago" />
             <option value="Denvor" />
           </datalist>
+          <br/>
           <input type="submit" value="Submit Location" />
         </form>
           {this.state.city ? <h4>Location: {this.state.city},  {this.state.state}, {this.state.country}</h4>: null}
