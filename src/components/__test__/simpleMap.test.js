@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { mount } from 'enzyme';
 import Enzyme from 'enzyme';
 import Navbar from '../../Navbar';
-import App from '../../App';
+
 
 let wrapped;
 let wrapped2;
